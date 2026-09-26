@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="net.alphaben.commentanalyzer.ui.MainController"
+            styleClass="root-container">
+
+    <!-- Summary -->
+    <top>
+        <VBox spacing="12" styleClass="summary-section">
+
+            <padding>
+                <Insets top="24" right="32" bottom="20" left="32"/>
+            </padding>
+
+            <Label text="AI Comment Analyzer"
+                   styleClass="title"/>
+
+            <Label text="Summary"
+                   styleClass="section-title"/>
+
+            <HBox spacing="12">
+
+                <VBox styleClass="summary-card">
+                    <Label fx:id="totalLabel"
+                           text="0"
+                           styleClass="summary-number"/>
+                    <Label text="Messages"
+                           styleClass="summary-label"/>
+                </VBox>
+
+                <VBox styleClass="summary-card">
+                    <Label fx:id="positiveCountLabel"
+                           text="0"
+                           styleClass="summary-number"/>
+                    <Label text="Positive"
+                           styleClass="summary-label"/>
+                </VBox>
+
+                <VBox styleClass="summary-card">
+                    <Label fx:id="neutralCountLabel"
+                           text="0"
+                           styleClass="summary-number"/>
+                    <Label text="Neutral"
+                           styleClass="summary-label"/>
+                </VBox>
+
+                <VBox styleClass="summary-card">
+                    <Label fx:id="negativeCountLabel"
+                           text="0"
+                           styleClass="summary-number"/>
+                    <Label text="Negative"
+                           styleClass="summary-label"/>
+                </VBox>
+
+                <VBox styleClass="summary-card">
+                    <Label fx:id="toxicCountLabel"
+                           text="0"
+                           styleClass="summary-number"/>
+                    <Label text="Toxic"
+                           styleClass="summary-label"/>
+                </VBox>
+
+            </HBox>
+
+        </VBox>
+    </top>
+
+    <!-- Main content -->
+    <center>
+        <VBox spacing="18">
+
+            <padding>
+                <Insets top="20" right="32" bottom="32" left="32"/>
+            </padding>
+
+            <Label text="Messages"
+                   styleClass="section-title"/>
+
+            <Label text="Enter one message per line."
+                   styleClass="hint"/>
+
+            <TextArea fx:id="messageInput"
+                      promptText="Great application!&#10;This update is disappointing.&#10;You're an idiot."
+                      wrapText="true"
+                      prefRowCount="8"
+                      styleClass="message-input"/>
+
+            <HBox spacing="12">
+
+                <Button fx:id="analyzeButton"
+                        text="Analyze All"
+                        onAction="#analyze"
+                        styleClass="analyze-button"/>
+
+                <Button text="Clear"
+                        onAction="#clear"
+                        styleClass="secondary-button"/>
+
+                <ProgressIndicator fx:id="loading"
+                                   visible="false"
+                                   managed="false"
+                                   prefWidth="30"
+                                   prefHeight="30"/>
+
+            </HBox>
+
+            <Separator/>
+
+            <Label text="Results"
+                   styleClass="section-title"/>
+
+            <ListView fx:id="resultsList"
+                      VBox.vgrow="ALWAYS"
+                      styleClass="results-list"/>
+
+        </VBox>
+    </center>
+
+</BorderPane>
